@@ -27,56 +27,63 @@ export const AuthContextProvider = ({ children }) => {
             const mergedUser = { ...firebaseUser, ...data };
             setUser(mergedUser);
 
-            const registration = await navigator.serviceWorker.ready;
+            // check if the browser supports service worker
+            if (navigator.serviceWorker) {
+              const registration = await navigator.serviceWorker.ready;
 
-            registration.pushManager.subscribe({
-              userVisibleOnly: true,
-              applicationServerKey: environment.FIREBASE_WEB_PUSH_KEY,
-            });
-
-            const { default: messaging } = await import("@wepresto/firebase/messaging-sw");
-
-            let fcmToken;
-
-            try {
-              const currentToken = await getToken(messaging, {
-                vapidKey: environment.FIREBASE_WEB_PUSH_KEY,
-                serviceWorkerRegistration: registration,
+              registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: environment.FIREBASE_WEB_PUSH_KEY,
               });
-  
-              if (!currentToken) {
-                // eslint-disable-next-line no-console
-                console.log(
-                  "no registration token available. Request permission to generate one."
-                );
-                return;
-              }
 
-              fcmToken = currentToken;
-            } catch (error) {
-              // eslint-disable-next-line no-console
-              console.log("an error occurred while retrieving token. ", error);
-            }
+              const { default: messaging } = await import(
+                "@wepresto/firebase/messaging-sw"
+              );
 
-            // eslint-disable-next-line no-console
-            console.log("fcm token: ", fcmToken);
+              let fcmToken;
 
-            // check if the fcm token is set
-            if (fcmToken && fcmToken !== mergedUser.fcmToken) {
-              // check if the fcm token is the same as the one in the api
-              // if not, update the fcm token in the api
               try {
-                await userService.changeFcmtoken({
-                  authUid: firebaseUser.uid,
-                  fcmToken,
+                const currentToken = await getToken(messaging, {
+                  vapidKey: environment.FIREBASE_WEB_PUSH_KEY,
+                  serviceWorkerRegistration: registration,
                 });
+
+                if (!currentToken) {
+                  // eslint-disable-next-line no-console
+                  console.log(
+                    "no registration token available. Request permission to generate one.",
+                  );
+                  return;
+                }
+
+                fcmToken = currentToken;
               } catch (error) {
                 // eslint-disable-next-line no-console
-                console.log("error changing fcm token...");
-                console.error(error);
+                console.log(
+                  "an error occurred while retrieving token. ",
+                  error,
+                );
+              }
+
+              // eslint-disable-next-line no-console
+              console.log("fcm token: ", fcmToken);
+
+              // check if the fcm token is set
+              if (fcmToken && fcmToken !== mergedUser.fcmToken) {
+                // check if the fcm token is the same as the one in the api
+                // if not, update the fcm token in the api
+                try {
+                  await userService.changeFcmtoken({
+                    authUid: firebaseUser.uid,
+                    fcmToken,
+                  });
+                } catch (error) {
+                  // eslint-disable-next-line no-console
+                  console.log("error changing fcm token...");
+                  console.error(error);
+                }
               }
             }
-
             setLoading(false);
           })
           .catch((error) => {

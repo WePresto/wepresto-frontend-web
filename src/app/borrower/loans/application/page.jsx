@@ -210,6 +210,7 @@ export default function Application() {
       const simulatedLoan = await loanService.loanSimulate({
         amount,
         term: selectedTerm,
+        alias,
       });
 
       setSimulatedLoan(simulatedLoan);
