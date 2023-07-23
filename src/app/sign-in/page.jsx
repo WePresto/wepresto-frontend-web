@@ -56,7 +56,7 @@ const typeDepending = {
   },
 };
 
-export default function signInPage() {
+export default function SignInPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -235,7 +235,7 @@ export default function signInPage() {
             </Box>
             <chakra.p mt={6} fontSize="xs" textAlign="center" color="gray.600">
               Al iniciar sesión aceptas los{" "}
-              <Link href={"/terminos"} target="_blank" color="primary.600">
+              <Link href={"/terms"} target="_blank" color="primary.600">
                 Términos y condiciones
               </Link>
             </chakra.p>

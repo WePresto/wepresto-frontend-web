@@ -9,7 +9,7 @@ import isUserTypeValid from "@wepresto/utils/is-user-type-valid";
 
 import StepsForm from "./_components/steps-form";
 
-export default function SignUp() {
+export default function SignUpPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
 

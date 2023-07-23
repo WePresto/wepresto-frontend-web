@@ -16,6 +16,8 @@ import {
   Flex,
   Button,
   createStandaloneToast,
+  chakra,
+  Link,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -56,7 +58,9 @@ const documentTypes = [
 export default function StepsForm({ type = undefined }) {
   const [step, setStep] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
-  const [selectedDocumentType, setSelectedDocumentType] = useState("Cédula de ciudadanía");
+  const [selectedDocumentType, setSelectedDocumentType] = useState(
+    "Cédula de ciudadanía",
+  );
 
   const { register, handleSubmit, watch, formState } = useForm({
     mode: "all",
@@ -225,7 +229,7 @@ export default function StepsForm({ type = undefined }) {
                     onChange={(e) => {
                       const { value } = e.target;
                       const documentType = documentTypes.find(
-                        (item) => item.value === value
+                        (item) => item.value === value,
                       );
                       setSelectedDocumentType(documentType.name);
                     }}
@@ -371,6 +375,12 @@ export default function StepsForm({ type = undefined }) {
           </Flex>
         </ButtonGroup>
       </Box>
+      <chakra.p mt={6} fontSize="xs" textAlign="center" color="gray.600">
+        Al registrarte aceptas los{" "}
+        <Link href={"/terms"} target="_blank" color="primary.600">
+          Términos y condiciones
+        </Link>
+      </chakra.p>
     </>
   );
 }
