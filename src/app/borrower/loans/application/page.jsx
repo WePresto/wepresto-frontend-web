@@ -240,7 +240,7 @@ export default function Application() {
 
       await loanService.loanApply({
         borrowerUid: getBorrowerUid(user),
-        amount: simulatedLoan?.amount,
+        amount: simulatedLoan?.requestedAmount,
         term: simulatedLoan?.term,
         alias: simulatedLoan?.alias,
       });
