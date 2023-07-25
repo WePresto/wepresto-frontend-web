@@ -123,7 +123,7 @@ export default function LoanInformationCard({ data }) {
                     <Text fontWeight="600" color="primary.900" ml={2} mr={4}>
                       {data?.annualInterestRate
                         ? approximateToTwoDecimals(
-                            (data?.annualInterestRate * 100) / 12
+                          ((data?.annualInterestRate || 0) * 100) / 12
                           )
                         : "--"}
                       %
@@ -162,7 +162,7 @@ export default function LoanInformationCard({ data }) {
                 <Text ml={2} mr={4} fontWeight="600" color="primary.900">
                   {data?.annualInterestOverdueRate
                     ? approximateToTwoDecimals(
-                        (data?.annualInterestOverdueRate / 12) * 100
+                      ((data?.annualInterestRate || 0) * 100) / 12
                       )
                     : "--"}
                   %

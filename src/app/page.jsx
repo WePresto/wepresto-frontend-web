@@ -268,7 +268,7 @@ export default function LandingPage() {
           </SimpleGrid>
         </Container>
       </Box>
-      
+
       <Flex
         bg="#edf3f8"
         _dark={{
@@ -371,15 +371,22 @@ export default function LandingPage() {
           </Box>
         </Box>
       </Flex>
-      
+
       <Box bg="primary.500" as="section" py={{ base: "10", md: "14" }}>
-        <Stack mb={8} spacing={4} as={Container} maxW={"4xl"} textAlign={"center"}>
-          <Heading color="white" fontSize={"3xl"}>Nuestras cifras</Heading>
+        <Stack
+          mb={8}
+          spacing={4}
+          as={Container}
+          maxW={"4xl"}
+          textAlign={"center"}
+        >
+          <Heading color="white" fontSize={"3xl"}>
+            Nuestras cifras
+          </Heading>
         </Stack>
         <Container maxW={"6xl"}>
           <SimpleGrid columns={{ base: 1, md: 4 }} gap={{ base: "5", md: "6" }}>
             {stats.map(({ label, value }) => (
-
               <Box
                 key={Math.random()}
                 px={{ base: "4", md: "6" }}
@@ -399,7 +406,7 @@ export default function LandingPage() {
           </SimpleGrid>
         </Container>
       </Box>
-      
+
       <SimpleGrid
         columns={{
           base: 1,
@@ -575,7 +582,8 @@ export default function LandingPage() {
                   color: "gray.500",
                 }}
               >
-                ¿Tienes dinero y no sabes en qué invertirlo? En WePresto ves tu dinero crecer mensualmente.
+                ¿Tienes dinero y no sabes en qué invertirlo? En WePresto ves tu
+                dinero crecer mensualmente.
               </chakra.p>
               <Button
                 variant="solid"
@@ -617,16 +625,15 @@ export default function LandingPage() {
         </Box>
       </Flex>
 
-      <Box
-        bg="white"
-        color={useColorModeValue("gray.700", "gray.200")}>
+      <Box bg="white" color={useColorModeValue("gray.700", "gray.200")}>
         <Container
           as={Stack}
           maxW={"6xl"}
           py={4}
           spacing={4}
           justify={"center"}
-          align={"center"}>
+          align={"center"}
+        >
           <Image
             alt="bienvenido a wepresto"
             src={"/logo.png"}
@@ -637,14 +644,15 @@ export default function LandingPage() {
             <Link href={"#"}>Inicio</Link>
             <Link href={"/sign-in?type=borrower"}>Solicitar</Link>
             <Link href={"/sign-in?type=lender"}>Invertir</Link>
-            <Link href={"mailto:co.wepresto@gmail.com"}>Contacto</Link>
+            <Link href={"mailto:tech@wepresto.com"}>Contacto</Link>
           </Stack>
         </Container>
 
         <Box
           borderTopWidth={1}
           borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}>
+          borderColor={useColorModeValue("gray.200", "gray.700")}
+        >
           <Container
             as={Stack}
             maxW={"6xl"}
@@ -652,10 +660,14 @@ export default function LandingPage() {
             direction={{ base: "column", md: "row" }}
             spacing={4}
             justify={{ base: "center", md: "space-between" }}
-            align={{ base: "center", md: "center" }}>
+            align={{ base: "center", md: "center" }}
+          >
             <Text>© 2023 WePresto. Derechos reservados.</Text>
             <Stack direction={"row"} spacing={6}>
-              <SocialButton label={"Instagram"} href={"https://instagram.com/wepresto"}>
+              <SocialButton
+                label={"Instagram"}
+                href={"https://instagram.com/wepresto"}
+              >
                 <FaInstagram />
               </SocialButton>
             </Stack>

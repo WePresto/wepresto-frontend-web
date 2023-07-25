@@ -122,11 +122,11 @@ export default function Application() {
 
     if (amount < MIN_AMOUNT) {
       return setErrorMessage(
-        `El monto mínimo es ${formatCurrency(MIN_AMOUNT, "COP")}`
+        `El monto mínimo es ${formatCurrency(MIN_AMOUNT, "COP")}`,
       );
     } else if (amount > MAX_AMOUNT) {
       return setErrorMessage(
-        `El monto máximo es ${formatCurrency(MAX_AMOUNT, "COP")}`
+        `El monto máximo es ${formatCurrency(MAX_AMOUNT, "COP")}`,
       );
     } else if (amount % 10000 !== 0) {
       return setErrorMessage("El monto debe ser múltiplo de 10000");
@@ -137,14 +137,14 @@ export default function Application() {
 
   useEffect(() => {
     setAliasPlaceholder(
-      ALIAS_PLACEHOLDERS[Math.floor(Math.random() * ALIAS_PLACEHOLDERS.length)]
+      ALIAS_PLACEHOLDERS[Math.floor(Math.random() * ALIAS_PLACEHOLDERS.length)],
     );
 
     const intervalId = setInterval(() => {
       setAliasPlaceholder(
         ALIAS_PLACEHOLDERS[
           Math.floor(Math.random() * ALIAS_PLACEHOLDERS.length)
-        ]
+        ],
       );
     }, 5000);
 
@@ -443,8 +443,8 @@ export default function Application() {
                   <Text color={"gray.400"}>Interés mensual:</Text>
                   <Text>
                     {approximateToTwoDecimals(
-                      (simulatedLoan?.annualInterestRate || 0) / 12
-                    ) * 100}
+                      ((simulatedLoan?.annualInterestRate || 0) * 100) / 12,
+                    )}
                     %
                   </Text>
                 </Flex>
@@ -473,7 +473,7 @@ export default function Application() {
                   <Text>
                     {formatCurrency(
                       simulatedLoan?.platformUsageFee || 0,
-                      "COP"
+                      "COP",
                     )}
                   </Text>
                 </Flex>
