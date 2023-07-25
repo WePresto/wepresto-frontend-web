@@ -37,11 +37,6 @@ export const metadata = {
       "La plataforma de préstamos colaborativos que ofrece las mejores tasas del mercado. Pide prestado y paga a una tasa de interés baja. Invierte y obtén una rentabilidad por tu dinero mes a mes.",
     images: ["https://wepresto.com/banner_meta.png"],
   },
-  icons: {
-    other: {
-      rel: "/icon.png",
-    },
-  },
 };
 
 export default function RootLayout({ children }) {
