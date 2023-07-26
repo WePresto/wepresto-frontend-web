@@ -517,7 +517,7 @@ export default function LandingPage() {
         _dark={{
           bg: "#3e3e3e",
         }}
-        p={[8, 20]}
+        p={[8, 21]}
         w="auto"
         justifyContent="center"
         alignItems="center"

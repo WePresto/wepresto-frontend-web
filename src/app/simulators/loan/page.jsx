@@ -32,7 +32,7 @@ const MAX_AMOUNT = 5000000;
 const INITIAL_AMOUNT = 500000;
 
 export default function SimulateLoan() {
-  const router =  useRouter();
+  const router = useRouter();
 
   const [loading, setLoading] = useState(true);
   const [terms, setTerms] = useState([]);
@@ -171,7 +171,7 @@ export default function SimulateLoan() {
               _hover={{ cursor: "pointer" }}
               onClick={() => router.push("/")}
             />
-            <Heading size="xl" fontWeight="400" mt={6}>
+            <Heading size="xl" fontWeight="400" mt={6} textAlign={"center"}>
               {!simulatedLoan && "¿Cuánto dinero necesitas?"}
             </Heading>
             {simulatedLoan ? (
@@ -208,7 +208,7 @@ export default function SimulateLoan() {
                       <Heading color="brand.font" fontWeight="400" size={"md"}>
                         Cuotas de:
                       </Heading>
-                      <Text color="primary.900" fontSize={42} fontWeight="800">
+                      <Text color="primary.500" fontSize={42} fontWeight="800">
                         {formatCurrency(
                           simulatedLoan.loanInstallments[0].amount,
                         )}
@@ -228,6 +228,7 @@ export default function SimulateLoan() {
                       <Text color="primary.900" fontSize={18}>
                         T. plataforma:
                       </Text>
+                      &nbsp;
                       <Text
                         color="primary.700"
                         fontSize={[18, 18, 22]}
@@ -244,6 +245,7 @@ export default function SimulateLoan() {
                       <Text color="primary.900" fontSize={18}>
                         Interés anual:
                       </Text>
+                      &nbsp;
                       <Text
                         color="primary.700"
                         fontSize={[18, 18, 22]}
@@ -260,6 +262,7 @@ export default function SimulateLoan() {
                       <Text color="primary.900" fontSize={18}>
                         Interés mensual:
                       </Text>
+                      &nbsp;
                       <Text
                         color="primary.700"
                         fontSize={[18, 18, 22]}
@@ -279,6 +282,7 @@ export default function SimulateLoan() {
                       <Text color="primary.900" fontSize={18}>
                         Pago total:
                       </Text>
+                      &nbsp;
                       <Text
                         color="primary.700"
                         fontSize={[18, 18, 22]}
@@ -295,6 +299,7 @@ export default function SimulateLoan() {
                       <Text color="primary.900" fontSize={18}>
                         Número de cuotas:
                       </Text>
+                      &nbsp;
                       <Text
                         color="primary.700"
                         fontSize={[18, 18, 22]}
@@ -361,7 +366,10 @@ export default function SimulateLoan() {
                         }
                         mx={[0, 0, 3]}
                         my={[3, 3, 0]}
-                        width="230px"
+                        maxW={{
+                          lg: "230px",
+                          sm: "100%",
+                        }}
                       >
                         <NumberInputField
                           py={8}
@@ -390,7 +398,10 @@ export default function SimulateLoan() {
                           mt={[3, 3, 0]}
                           ml={[0, 0, 3]}
                           h={66}
-                          maxW="200px"
+                          maxW={{
+                            lg: "230px",
+                            sm: "100%",
+                          }}
                           value={selectedTerm}
                           fontSize={25}
                           fontWeight="800"
