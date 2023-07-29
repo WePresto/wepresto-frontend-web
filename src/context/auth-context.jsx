@@ -2,11 +2,13 @@ import React from "react";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { getToken } from "firebase/messaging";
 
+import firebaseApp from "../firebase/config";
+
 import environment from "@wepresto/environment";
 
 import userService from "@wepresto/services/user.service";
 
-import firebaseApp from "../firebase/config";
+import Loading from "@wepresto/components/Loading";
 
 const auth = getAuth(firebaseApp);
 
@@ -102,7 +104,7 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user }}>
-      {loading ? <div>Loading...</div> : children}
+      {loading ? <Loading /> : children}
     </AuthContext.Provider>
   );
 };
