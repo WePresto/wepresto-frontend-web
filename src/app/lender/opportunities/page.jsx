@@ -6,6 +6,8 @@ import {
   Heading,
   createStandaloneToast,
   Spinner,
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react";
 
 import loanService from "@wepresto/services/loan.service";
@@ -56,8 +58,13 @@ export default function OpportunitiesPage() {
 
         {loading && <Spinner mt={4} />}
 
-        {!loading && loans.length > 0 && (
-          <OpportunitiesTable data={loans} />
+        {!loading && loans.length > 0 && <OpportunitiesTable data={loans} />}
+
+        {!loading && loans.length < 1 && (
+          <Alert status="info" marginTop={4} width={"fit-content"} borderRadius={"md"}>
+            <AlertIcon />
+            No hay oportunidades de inversión disponibles en este momento.
+          </Alert>
         )}
       </Flex>
     </>
