@@ -102,7 +102,7 @@ export default function Application() {
 
   const filterTerms = () => {
     return terms.filter(({ value }) => {
-      if (amount <= MIN_AMOUNT) return false;
+      if (amount < MIN_AMOUNT) return false;
       if (amount <= 500000 && value <= 6) {
         return true;
       } else if (amount > 500000 && amount <= 1000000 && value <= 12) {
