@@ -55,11 +55,11 @@ const getRows = (items, type) => {
           break;
       }
 
-      let paid = "--";
+      let paid = "N/A";
       if (item.paid === true) paid = "Sí";
       if (item.paid === false) paid = "No";
 
-      let processed = "--";
+      let processed = "N/A";
       if (item.processed === true) processed = "Sí";
       if (item.processed === false) processed = "No";
 
@@ -69,12 +69,12 @@ const getRows = (items, type) => {
         type,
         date: formatDate(new Date(item.dueDate || item.movementDate), "UTC"),
         amount: formatCurrency(item.amount, "COP"),
-        interest: item.interest ? formatCurrency(item.interest, "COP") : "--",
+        interest: item.interest ? formatCurrency(item.interest, "COP") : "N/A",
         principal: item.principal
           ? formatCurrency(item.principal, "COP")
-          : "--",
+          : "N/A",
         total: formatCurrency(item.total, "COP"),
-        balance: item.balance ? formatCurrency(item.balance, "COP") : "--",
+        balance: item.balance ? formatCurrency(item.balance, "COP") : "N/A",
         paid,
         processed,
       };

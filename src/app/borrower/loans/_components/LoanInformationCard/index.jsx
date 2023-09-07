@@ -113,7 +113,7 @@ export default function LoanInformationCard({ data }) {
                     <Text fontWeight="600" color="primary.900" ml={2} mr={4}>
                       {data?.annualInterestRate
                         ? `${data?.annualInterestRate * 100}%`
-                        : "--"}
+                        : "N/A"}
                     </Text>
                   </Flex>
                   <Flex alignItems="center">
@@ -125,7 +125,7 @@ export default function LoanInformationCard({ data }) {
                         ? approximateToTwoDecimals(
                           ((data?.annualInterestRate || 0) * 100) / 12
                           )
-                        : "--"}
+                        : "N/A"}
                       %
                     </Text>
                   </Flex>
@@ -134,7 +134,7 @@ export default function LoanInformationCard({ data }) {
                       Plazo de pago:
                     </Text>
                     <Text fontWeight="600" color="primary.900" ml={2}>
-                      {data?.term ? `${data?.term} cuotas` : "--"}
+                      {data?.term ? `${data?.term} cuotas` : "N/A"}
                     </Text>
                   </Flex>
                 </Flex>
@@ -164,7 +164,7 @@ export default function LoanInformationCard({ data }) {
                     ? approximateToTwoDecimals(
                       ((data?.annualInterestRate || 0) * 100) / 12
                       )
-                    : "--"}
+                    : "N/A"}
                   %
                 </Text>
               </Flex>
@@ -175,7 +175,7 @@ export default function LoanInformationCard({ data }) {
                 <Text ml={2} mr={4} fontWeight="600" color="primary.900">
                   {data?.createdAt
                     ? formatDate(new Date(data.createdAt), "UTC")
-                    : "--"}
+                    : "N/A"}
                 </Text>
               </Flex>
               <Flex alignItems="center">
@@ -185,7 +185,7 @@ export default function LoanInformationCard({ data }) {
                 <Text ml={2} mr={4} fontWeight="600" color="primary.900">
                   {data?.startDate
                     ? formatDate(new Date(data.startDate), "UTC")
-                    : "--"}
+                    : "N/A"}
                 </Text>
               </Flex>
               <Flex alignItems="center">
@@ -195,7 +195,7 @@ export default function LoanInformationCard({ data }) {
                 <Text ml={2} mr={4} fontWeight="600" color="primary.900">
                   {data?.platformFee
                     ? approximateToTwoDecimals(data?.platformFee)
-                    : "--"}
+                    : "N/A"}
                 </Text>
               </Flex>
             </Flex>
