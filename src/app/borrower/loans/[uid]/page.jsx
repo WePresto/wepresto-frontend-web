@@ -57,7 +57,7 @@ export default function LoanPage() {
         w={"100%"}
       >
         <Heading key="1" as="h3" size="lg" fontWeight={800}>
-          Préstamo
+          Préstamo {loan?.alias ?? loan?.uid}
         </Heading>
         {loading && <Spinner mt={4} />}
 

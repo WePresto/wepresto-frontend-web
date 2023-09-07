@@ -180,14 +180,14 @@ export default function MovementsTable({ movements = [] }) {
           isDisabled={currentPage === 0}
           onClick={handlePreviousPage}
         >
-          Previous
+          Anterior
         </Button>
         <Button
           ml={2}
           isDisabled={endIndex >= filteredMovements.length}
           onClick={handleNextPage}
         >
-          Next
+          Siguiente
         </Button>
       </Flex>
     </Flex>
