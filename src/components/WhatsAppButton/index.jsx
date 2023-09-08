@@ -4,7 +4,7 @@ import React from "react";
 const WhatsAppIcon = ({ fullName, documentNumber }) => {
   const handleSendMessage = () => {
     window.open(
-      `https://api.whatsapp.com/573134086868?text=Hola, soy ${fullName}, mi número de documento es ${documentNumber} y necesito ayuda con la plataforma.`,
+      `https://api.whatsapp.com/send?phone=573134086868&text=Hola, soy ${fullName}, mi número de documento es ${documentNumber} y necesito ayuda con la plataforma.`,
       "_blank",
     );
   };
