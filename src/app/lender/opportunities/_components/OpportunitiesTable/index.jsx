@@ -55,7 +55,7 @@ export default function OpportunitiesTable({ data = [] }) {
           style={{ borderCollapse: "separate", borderSpacing: "0 12px" }}
           variant="simple"
         >
-          <Thead>
+          <Thead whiteSpace={"nowrap"}>
             <Tr bgColor="white">
               <Th color="primary.600" borderLeftRadius={12}>
                 Prestamo
@@ -133,7 +133,7 @@ export default function OpportunitiesTable({ data = [] }) {
               </Th>
             </Tr>
           </Thead>
-          <Tbody>
+          <Tbody whiteSpace={"nowrap"}>
             {getRows(data).map((item, index) => (
               <Tr key={index} bgColor="white">
                 <Td borderLeftRadius={12} textAlign="left">
@@ -153,7 +153,7 @@ export default function OpportunitiesTable({ data = [] }) {
                       handleInvestmentButtonClick({ loanUid: item.uid })
                     }
                   >
-                    Quiero participar!
+                    ¡Quiero participar!
                   </Button>
                 </Td>
               </Tr>
