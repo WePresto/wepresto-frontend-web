@@ -1,11 +1,11 @@
 import { Flex, Text, Image } from "@chakra-ui/react";
 import React from "react";
 
-const WhatsAppIcon = ({ phoneNumber, fullName, documentNumber }) => {
+const WhatsAppIcon = ({ fullName, documentNumber }) => {
   const handleSendMessage = () => {
     window.open(
-      `https://wa.me/${phoneNumber}?text=Hola, soy ${fullName}, mi número de documento es ${documentNumber} y necesito ayuda con la plataforma.`,
-      "_blank"
+      `https://api.whatsapp.com/573134086868?text=Hola, soy ${fullName}, mi número de documento es ${documentNumber} y necesito ayuda con la plataforma.`,
+      "_blank",
     );
   };
 

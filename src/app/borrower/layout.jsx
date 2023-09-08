@@ -2,10 +2,7 @@
 
 import React from "react";
 import { Flex, Container } from "@chakra-ui/react";
-import {
-  FaChartPie,
-  FaChartLine,
-} from "react-icons/fa";
+import { FaChartPie, FaChartLine } from "react-icons/fa";
 
 import { Providers } from "../providers";
 
@@ -55,7 +52,6 @@ export default function BorrowerLayaout({ children }) {
           <WhatsAppIcon
             documentNumber={user?.documentNumber}
             fullName={user?.fullName}
-            phoneNumber={user?.phoneNumber}
           />
           <Flex width="100%" px={[4, 4, 14]} pl={[4, 4, 0]}>
             {children}

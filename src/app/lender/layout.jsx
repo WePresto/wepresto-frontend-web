@@ -2,11 +2,7 @@
 
 import React from "react";
 import { Flex, Container } from "@chakra-ui/react";
-import {
-  FaChartPie,
-  FaChartLine,
-  FaSearchDollar,
-} from "react-icons/fa";
+import { FaChartPie, FaChartLine, FaSearchDollar } from "react-icons/fa";
 import { BiMoneyWithdraw } from "react-icons/bi";
 
 import { Providers } from "../providers";
@@ -40,7 +36,7 @@ const LenderMenuItems = [
     icon: <BiMoneyWithdraw fontSize={22} style={{ marginRight: "8px" }} />,
     iconMobile: <BiMoneyWithdraw fontSize={22} />,
     link: "/lender/withdrawals",
-  }
+  },
 ];
 
 export default function BorrowerLayaout({ children }) {
@@ -68,7 +64,6 @@ export default function BorrowerLayaout({ children }) {
           <WhatsAppIcon
             documentNumber={user?.documentNumber}
             fullName={user?.fullName}
-            phoneNumber={user?.phoneNumber}
           />
           <Flex width="100%" px={[4, 4, 14]} pl={[4, 4, 0]}>
             {children}
