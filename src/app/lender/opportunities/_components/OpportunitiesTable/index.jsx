@@ -22,7 +22,7 @@ import HowToInvestModal from "./_components/HowToInvestModal";
 const getRows = (items) => {
   return items.map((item) => {
     return {
-      uid: item?.uid.split("-")[4],
+      consecutive: item?.consecutive,
       amount: formatCurrency(item?.amount, "COP"),
       annualInterestRate: item?.annualInterestRate * 100 + "%",
       annualInterestOverdueRate: item?.annualInterestOverdueRate * 100 + "%",
@@ -37,10 +37,10 @@ const getRows = (items) => {
 
 export default function OpportunitiesTable({ data = [] }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [loanUid, setLoanUid] = useState("");
+  const [loanConsecutive, setLoanConsecutive] = useState(undefined);
 
-  const handleInvestmentButtonClick = ({ loanUid }) => {
-    setLoanUid(loanUid);
+  const handleInvestmentButtonClick = ({ loanConsecutive }) => {
+    setLoanConsecutive(loanConsecutive);
     onOpen();
   };
 
@@ -137,7 +137,7 @@ export default function OpportunitiesTable({ data = [] }) {
             {getRows(data).map((item, index) => (
               <Tr key={index} bgColor="white">
                 <Td borderLeftRadius={12} textAlign="left">
-                  {item.uid}
+                  {item.consecutive}
                 </Td>
                 <Td textAlign="left">{item.amount}</Td>
                 <Td textAlign="left">{item.annualInterestRate}</Td>
@@ -150,10 +150,10 @@ export default function OpportunitiesTable({ data = [] }) {
                     colorScheme="primary"
                     maxW={"fit-content"}
                     onClick={() =>
-                      handleInvestmentButtonClick({ loanUid: item.uid })
+                      handleInvestmentButtonClick({ loanConsecutive: item.consecutive })
                     }
                   >
-                    ¡Quiero participar!
+                    ¡Quiero invertir!
                   </Button>
                 </Td>
               </Tr>
@@ -161,7 +161,7 @@ export default function OpportunitiesTable({ data = [] }) {
           </Tbody>
         </Table>
       </Flex>
-      <HowToInvestModal isOpen={isOpen} onClose={onClose} loanUid={loanUid} />
+      <HowToInvestModal isOpen={isOpen} onClose={onClose} loanConsecutive={loanConsecutive} />
     </>
   );
 }

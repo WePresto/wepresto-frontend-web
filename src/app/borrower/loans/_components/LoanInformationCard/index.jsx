@@ -14,48 +14,11 @@ import { useRouter } from "next/navigation";
 import environment from "@wepresto/environment";
 
 import formatCurrency from "@wepresto/utils/format-currency";
-
-import Chip from "./_components/Chip";
 import approximateToTwoDecimals from "@wepresto/utils/approximate-to-two-decimals";
 import formatDate from "@wepresto/utils/format-date";
+import getLoanStatusObj from "@wepresto/utils/get-loan-status-obj";
 
-const loanState = {
-  APPROVED: {
-    name: "Aprobado",
-    bgColor: "status.approved",
-    color: "primary.900",
-  },
-  REJECTED: {
-    name: "Rechazado",
-    bgColor: "status.rejected",
-    color: "white",
-  },
-  DISBURSED: {
-    name: "Desembolsado",
-    bgColor: "status.disbursed",
-    color: "white",
-  },
-  APPLIED: {
-    name: "Solicitado",
-    bgColor: "status.applied",
-    color: "white",
-  },
-  REVIEWING: {
-    name: "En Revisión",
-    bgColor: "status.reviewing",
-    color: "white",
-  },
-  PAID: {
-    name: "Pagado",
-    bgColor: "status.paid",
-    color: "primary.900",
-  },
-  FUNDING: {
-    name: "Fondeando",
-    bgColor: "status.funding",
-    color: "white",
-  },
-};
+import Chip from "./_components/Chip";
 
 export default function LoanInformationCard({ data }) {
   const router = useRouter();
@@ -85,6 +48,7 @@ export default function LoanInformationCard({ data }) {
             justifyContent="space-between"
           >
             <Flex
+            id="jeje"
               justifyContent="space-between"
               width="100%"
               alignItems="center"
@@ -94,18 +58,24 @@ export default function LoanInformationCard({ data }) {
                   alignItems={["flex-start", "flex-start", "center"]}
                   flexDir={["column", "column", "row"]}
                 >
-                  <Flex alignItems={"baseline"}>
-                    <Text fontSize={25} color="brand.font">
-                      {formatCurrency(data.amount, "COP")}
-                    </Text>
-                  </Flex>
+                  <Text fontSize={25} color="brand.font">
+                    {formatCurrency(data.amount, "COP")}
+                  </Text>
                   <Chip
-                    text={loanState[data.status].name}
-                    color={loanState[data.status].color}
-                    bgColor={loanState[data.status].bgColor}
+                    text={getLoanStatusObj(data.status).name}
+                    color={getLoanStatusObj(data.status).color}
+                    bgColor={getLoanStatusObj(data.status).bgColor}
                   />
                 </Flex>
                 <Flex display={["none", "none", "flex"]} fontSize={14}>
+                  <Flex alignItems="center">
+                    <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
+                      Identificador:
+                    </Text>
+                    <Text fontWeight="600" color="primary.900" ml={2} mr={4}>
+                      {data?.consecutive}
+                    </Text>
+                  </Flex>
                   <Flex alignItems="center">
                     <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
                       Tasa EA:
@@ -118,12 +88,12 @@ export default function LoanInformationCard({ data }) {
                   </Flex>
                   <Flex alignItems="center">
                     <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
-                      Interés mensual:
+                      Tasa EM:
                     </Text>
                     <Text fontWeight="600" color="primary.900" ml={2} mr={4}>
                       {data?.annualInterestRate
                         ? approximateToTwoDecimals(
-                          ((data?.annualInterestRate || 0) * 100) / 12
+                            ((data?.annualInterestRate || 0) * 100) / 12,
                           )
                         : "N/A"}
                       %
@@ -131,7 +101,7 @@ export default function LoanInformationCard({ data }) {
                   </Flex>
                   <Flex alignItems="center">
                     <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
-                      Plazo de pago:
+                      Termino:
                     </Text>
                     <Text fontWeight="600" color="primary.900" ml={2}>
                       {data?.term ? `${data?.term} cuotas` : "N/A"}
@@ -155,14 +125,53 @@ export default function LoanInformationCard({ data }) {
               mx={4}
               flexDirection={["column", "column", "row"]}
             >
-              <Flex alignItems="center">
+              <Flex alignItems="center" display={["flex", "flex", "none"]}>
                 <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
-                  Interes mora:
+                  Identificador:
+                </Text>
+                <Text fontWeight="600" color="primary.900" ml={2} mr={4}>
+                  {data?.consecutive}
+                </Text>
+              </Flex>
+              <Flex alignItems="center" display={["flex", "flex", "none"]}>
+                <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
+                  Tasa EA:
+                </Text>
+                <Text fontWeight="600" color="primary.900" ml={2} mr={4}>
+                  {data?.annualInterestRate
+                    ? `${data?.annualInterestRate * 100}%`
+                    : "N/A"}
+                </Text>
+              </Flex>
+              <Flex alignItems="center" display={["flex", "flex", "none"]}>
+                <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
+                  Tasa EM:
+                </Text>
+                <Text fontWeight="600" color="primary.900" ml={2} mr={4}>
+                  {data?.annualInterestRate
+                    ? approximateToTwoDecimals(
+                        ((data?.annualInterestRate || 0) * 100) / 12,
+                      )
+                    : "N/A"}
+                  %
+                </Text>
+              </Flex>
+              <Flex alignItems="center" display={["flex", "flex", "none"]}>
+                <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
+                  Termino:
+                </Text>
+                <Text fontWeight="600" color="primary.900" ml={2}>
+                  {data?.term ? `${data?.term} cuotas` : "N/A"}
+                </Text>
+              </Flex>
+              <Flex alignItems="center" display={["flex", "flex", "none"]}>
+                <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
+                  I. Mora:
                 </Text>
                 <Text ml={2} mr={4} fontWeight="600" color="primary.900">
                   {data?.annualInterestOverdueRate
                     ? approximateToTwoDecimals(
-                      ((data?.annualInterestRate || 0) * 100) / 12
+                        ((data?.annualInterestOverdueRate || 0) * 100) / 12,
                       )
                     : "N/A"}
                   %
@@ -170,7 +179,7 @@ export default function LoanInformationCard({ data }) {
               </Flex>
               <Flex alignItems="center">
                 <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
-                  Solicitud:
+                  Solicitado:
                 </Text>
                 <Text ml={2} mr={4} fontWeight="600" color="primary.900">
                   {data?.createdAt
@@ -194,7 +203,7 @@ export default function LoanInformationCard({ data }) {
                 </Text>
                 <Text ml={2} mr={4} fontWeight="600" color="primary.900">
                   {data?.platformFee
-                    ? approximateToTwoDecimals(data?.platformFee)
+                    ? formatCurrency(data?.platformFee)
                     : "N/A"}
                 </Text>
               </Flex>

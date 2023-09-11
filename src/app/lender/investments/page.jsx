@@ -29,11 +29,13 @@ import getLenderUid from "@wepresto/utils/get-lender-uid";
 import ValidateUser from "@wepresto/components/ValidateUser";
 import formatCurrency from "@wepresto/utils/format-currency";
 import approximateToTwoDecimals from "@wepresto/utils/approximate-to-two-decimals";
+import getLoanStatusObj from "@wepresto/utils/get-loan-status-obj";
 
 const getRows = (items) => {
   return items.map((item) => {
     return {
-      loan: item?.loan?.uid.split("-")[4],
+      loan: item?.loan?.consecutive,
+      loanStatus: getLoanStatusObj(item?.loan?.status)?.name,
       invested: formatCurrency(item?.amount, "COP"),
       participationRate:
         approximateToTwoDecimals(item?.participationRate * 100) + "%",
@@ -118,6 +120,7 @@ export default function InvestmentsPage() {
                   <Th color="primary.600" borderLeftRadius={12}>
                     Prestamo
                   </Th>
+                  <Th color="primary.600">Estado</Th>
                   <Th color="primary.600">Invertido</Th>
                   <Tooltip
                     label="El porcentaje de tu dinero que se usó para el préstamo. Si es del 100% es porque tú pusiste todo el dinero para ese préstamo."
@@ -197,8 +200,15 @@ export default function InvestmentsPage() {
               <Tbody>
                 {participations.map((participation, index) => (
                   <Tr key={index} bgColor="white">
-                    <Td color="brand.font" borderLeftRadius={12} textAlign="left">
+                    <Td
+                      color="brand.font"
+                      borderLeftRadius={12}
+                      textAlign="left"
+                    >
                       {participation.loan}
+                    </Td>
+                    <Td color="brand.font" textAlign="left">
+                      {participation.loanStatus}
                     </Td>
                     <Td color="brand.font" textAlign="left">
                       {participation.invested}
@@ -218,7 +228,11 @@ export default function InvestmentsPage() {
                     <Td color="brand.font" textAlign="left">
                       {participation.paidInterest}
                     </Td>
-                    <Td color="brand.font" textAlign="left" borderRightRadius={12}>
+                    <Td
+                      color="brand.font"
+                      textAlign="left"
+                      borderRightRadius={12}
+                    >
                       {participation.interest}
                     </Td>
                   </Tr>

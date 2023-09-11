@@ -53,7 +53,7 @@ export default function OpportunitiesPage() {
         w={"100%"}
       >
         <Heading key="1" as="h3" size="lg" fontWeight={800}>
-          Oportunidades para que inviertas
+          Oportunidades de inversión
         </Heading>
 
         {loading && <Spinner mt={4} />}

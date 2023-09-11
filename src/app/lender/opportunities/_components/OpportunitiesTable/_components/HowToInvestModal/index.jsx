@@ -18,6 +18,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { FaRegCopy } from "react-icons/fa";
+import formatCurrency from "@wepresto/utils/format-currency";
 
 const StepItem = ({ step, content, finalStep }) => (
   <Stack>
@@ -53,7 +54,7 @@ const StepItem = ({ step, content, finalStep }) => (
   </Stack>
 );
 
-const Guide = ({ loanUid }) => {
+const Guide = ({ loanConsecutive }) => {
   const toast = useToast();
 
   return (
@@ -70,18 +71,18 @@ const Guide = ({ loanUid }) => {
               onClick={() => {
                 navigator.clipboard.writeText(3134086868);
                 toast({
-                  title: "¡Valor copiado!",
+                  title: "Copiado!",
                   status: "success",
                   duration: 2000,
                   isClosable: true,
                 });
               }}
-              aria-label="Copiar número de WhatsApp"
+              aria-label="Copiar"
               variant="ghost"
               height="23px"
               color="primary.350"
               icon={<FaRegCopy />}
-            />
+            />. El monto debe de ser multiplo y mayor a {formatCurrency(10000)}
           </Text>
         }
       />
@@ -89,19 +90,20 @@ const Guide = ({ loanUid }) => {
         step={2}
         content={
           <Text>
-            Una vez que hayas realizado la transacción, envíanos una captura de
-            pantalla o comparte el comprobante al siguiente número de WhatsApp:{" "}
+            Una vez que hayas realizado la transacción, envíanos una captura el
+            comprobante al siguiente número en WhatsApp:{" "}
             <Link
               fontWeight="medium"
               color="primary.500"
               target="_blank"
-              href={
-                "https://wa.me/+573134086868/?text=Hola, quiero compartir el comprobante de inversión para el prestamo " +
-                loanUid
-              }
+              href={`https://wa.me/+573134086868/?text=Hola, quiero compartir el comprobante de inversión para el prestamo ${loanConsecutive}`}
             >
               +57 3134086868
-            </Link>
+            </Link>{" "}
+            indicando el identificador del préstamo:{" "}
+            <Box as="strong" color="primary.500">
+              {loanConsecutive}
+            </Box>
           </Text>
         }
       />
@@ -136,7 +138,7 @@ const Guide = ({ loanUid }) => {
   );
 };
 
-export default function HowToInvestModal({ isOpen, onClose, loanUid }) {
+export default function HowToInvestModal({ isOpen, onClose, loanConsecutive }) {
   return (
     <Modal isCentered isOpen={isOpen} onClose={onClose} size="lg">
       <ModalOverlay backdropFilter="blur(10px)" />
@@ -148,7 +150,7 @@ export default function HowToInvestModal({ isOpen, onClose, loanUid }) {
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Guide loanUid={loanUid} />
+          <Guide loanConsecutive={loanConsecutive} />
         </ModalBody>
       </ModalContent>
     </Modal>

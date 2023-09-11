@@ -281,7 +281,7 @@ export default function Application() {
         w={"100%"}
       >
         <Heading key="1" as="h3" size="lg" fontWeight={800}>
-          Aplica para un préstamo
+          Solicita tu préstamo
         </Heading>
         {loading && <Spinner mt={4} />}
 
@@ -302,7 +302,7 @@ export default function Application() {
             >
               <Flex flexDir={"column"} justifyContent="center">
                 <Text fontWeight={600} fontSize={18} mb={4}>
-                  Alias
+                  ¿Para qué lo necesitas?
                 </Text>
                 <Input
                   placeholder={aliasPlaceholder}

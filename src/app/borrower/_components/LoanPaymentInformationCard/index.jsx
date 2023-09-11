@@ -15,12 +15,10 @@ import { FaArrowRight } from "react-icons/fa";
 import formatCurrency from "@wepresto/utils/format-currency";
 
 import LoanDetails from "./_components/LoanDetails";
-import HowToPayModal from "./_components/HowToPayModal/inde";
+import HowToPayModal from "./_components/HowToPayModal";
 
 export default function LoanPaymentInformationCard({ data }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const { minimalPaymentInformation, totalPaymentInformation } = data;
 
   const handleHowToPayClick = () => {
     onOpen();
@@ -53,8 +51,8 @@ export default function LoanPaymentInformationCard({ data }) {
               <Flex alignItems={"baseline"}>
                 <Text fontSize={25} color="brand.font">
                   {formatCurrency(
-                    minimalPaymentInformation?.totalAmount,
-                    "COP"
+                    data?.minimalPaymentInformation?.totalAmount,
+                    "COP",
                   )}
                 </Text>
               </Flex>
@@ -97,8 +95,9 @@ export default function LoanPaymentInformationCard({ data }) {
       <HowToPayModal
         isOpen={isOpen}
         onClose={onClose}
-        minimumPaymentAmount={minimalPaymentInformation.totalAmount}
-        maximumPaymentAmount={totalPaymentInformation.totalAmount}
+        consecutive={data?.consecutive}
+        minimumPaymentAmount={data?.minimalPaymentInformation?.totalAmount}
+        maximumPaymentAmount={data?.totalPaymentInformation?.totalAmount}
       />
     </>
   );

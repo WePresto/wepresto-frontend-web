@@ -139,6 +139,7 @@ export default function Borrower() {
             <LoanPaymentInformationCard
               key={loan.uid}
               data={{
+                consecutive: loan.consecutive,
                 term: loan.term,
                 minimalPaymentInformation: {
                   ...loan.minimalPaymentInformation,
