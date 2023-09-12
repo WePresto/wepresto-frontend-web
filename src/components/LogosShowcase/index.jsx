@@ -1,9 +1,9 @@
-import React from 'react';
-import { Box, Flex, Image, chakra } from '@chakra-ui/react';
+import React from "react";
+import { Box, Flex, Image, chakra } from "@chakra-ui/react";
 
 const LogosShowcase = () => {
   const logos = [
-    'https://upload.wikimedia.org/wikipedia/commons/c/c9/Universidad_de_los_Andes_%28logo%29.png',
+    "https://upload.wikimedia.org/wikipedia/commons/c/c9/Universidad_de_los_Andes_%28logo%29.png",
     "https://wepresto.com/eventique.png",
     "http://disfal.com/wp-content/uploads/2017/08/logo.png"
   ];
