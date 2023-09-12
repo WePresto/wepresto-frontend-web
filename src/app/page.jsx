@@ -27,6 +27,7 @@ import ValidateUser from "@wepresto/components/ValidateUser";
 
 import Feature from "./_components/Feature";
 import SocialButton from "./_components/SocialButton";
+import LogosShowcase from "@wepresto/components/LogosShowcase";
 
 const slogans = [
   "Uniendo tecnología y financiamiento colaborativo para construir un futuro más próspero juntos.",
@@ -372,6 +373,8 @@ export default function LandingPage() {
         </Box>
       </Flex>
 
+      <LogosShowcase />
+
       <Box bg="primary.500" as="section" py={{ base: "10", md: "14" }}>
         <Stack
           mb={8}
@@ -617,7 +620,7 @@ export default function LandingPage() {
               <Feature>No hay cláusula de permanencia</Feature>
               <Feature>Retira cada mes sin problemas</Feature>
               <Feature>Reinvierte tus ganancias</Feature>
-              <Feature>Hasta 2.4% de rentabilidad MENSUAL</Feature>
+              <Feature>Hasta 28% de rentabilidad anual</Feature>
               <Feature>Ten control sobre cada una de tus inversiones</Feature>
               <Feature>Soporte 24/7</Feature>
             </VStack>
