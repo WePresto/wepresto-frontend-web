@@ -13,9 +13,11 @@ const LogosShowcase = () => {
       <Box maxW="6xl" mx="auto">
         <Flex align="center" justify="center" mb={6}>
           <chakra.h3 fontSize={{
-                base: "3xl",
-                sm: "2xl",
+                base: "2xl",
+                sm: "3xl",
               }}
+              px={12}
+              textAlign="center"
               fontWeight="extrabold"
               letterSpacing="tight"
               lineHeight="shorter"
@@ -25,10 +27,10 @@ const LogosShowcase = () => {
                 color: "gray.100",
               }}>Ellos confían en nosotros:</chakra.h3>
         </Flex>
-        <Flex justifyContent="center">
+        <Flex alignItems="center" flexWrap="wrap" justifyContent="center">
           {logos.map((logo, index) => (
             <Box key={index} p={4} mx={12}>
-              <Image src={logo} alt={`nos respalda ${index + 1}`} maxH="48px" maxW="100%" mx="auto" />
+              <Image src={logo} alt={`nos respalda ${index + 1}`} maxH="80px" maxW="100%" mx="auto" />
             </Box>
           ))}
         </Flex>

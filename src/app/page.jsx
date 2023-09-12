@@ -66,23 +66,23 @@ const images = [
 const features = [
   {
     id: 1,
-    title: "Minima experiencia crediticia",
+    title: "Mínima experiencia crediticia",
     text: "Somos la alternativa para los no bancarizados.",
   },
   {
     id: 2,
     title: "Mejores cuotas de interés",
-    text: "Olvidate del 15 o el 20% mensual. Tasas del 2% en adelante.",
+    text: "Olvídate del 15 o el 20% mensual. Tasas del 2% en adelante.",
   },
   {
     id: 3,
-    title: "Paga en linea",
+    title: "Paga en línea",
     text: "Paga por Nequi, así de fácil.",
   },
   {
     id: 4,
     title: "¿Tienes dinero? ¡Invierte!",
-    text: "Puedes generar rentabilidad y ayudas a otros.",
+    text: "Puedes generar rentabilidad y ayudar a otros.",
   },
 ];
 
