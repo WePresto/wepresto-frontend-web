@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Image, SimpleGrid, chakra } from '@chakra-ui/react';
+import { Box, Flex, Image, chakra } from '@chakra-ui/react';
 
 const LogosShowcase = () => {
   const logos = [
