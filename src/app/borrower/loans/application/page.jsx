@@ -177,7 +177,7 @@ export default function Application() {
       return toast({
         position: "bottom-right",
         title: "Hubo un error",
-        description: "Debes ingresar un alias",
+        description: "Debes ingresar para qué necesitas el préstamo",
         status: "error",
         duration: 10000,
         isClosable: true,

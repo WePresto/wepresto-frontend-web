@@ -34,7 +34,7 @@ import getLoanStatusObj from "@wepresto/utils/get-loan-status-obj";
 const getRows = (items) => {
   return items.map((item) => {
     return {
-      loan: item?.loan?.consecutive,
+      loanConsecutive: item?.loan?.consecutive,
       loanStatus: getLoanStatusObj(item?.loan?.status)?.name,
       invested: formatCurrency(item?.amount, "COP"),
       participationRate:
@@ -205,7 +205,7 @@ export default function InvestmentsPage() {
                       borderLeftRadius={12}
                       textAlign="left"
                     >
-                      {participation.loan}
+                      {participation.loanConsecutive}
                     </Td>
                     <Td color="brand.font" textAlign="left">
                       {participation.loanStatus}
