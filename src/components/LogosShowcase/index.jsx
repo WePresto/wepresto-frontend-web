@@ -5,7 +5,9 @@ const LogosShowcase = () => {
   const logos = [
     "https://upload.wikimedia.org/wikipedia/commons/c/c9/Universidad_de_los_Andes_%28logo%29.png",
     "https://wepresto.com/eventique.png",
-    "https://wepresto.com/dfl.png"
+    "https://wepresto.com/dfl.png",
+    "https://wepresto.com/logo_pivvot.webp",
+    "https://wepresto.com/clicks-parts.png"
   ];
 
   return (
