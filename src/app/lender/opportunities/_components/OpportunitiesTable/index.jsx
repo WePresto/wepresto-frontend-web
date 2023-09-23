@@ -61,7 +61,7 @@ export default function OpportunitiesTable({ data = [] }) {
                 Préstamo
               </Th>
               <Tooltip label="Monto solicitado para retirar" placement="auto">
-                <Th color="primary.600" cursor="help" textAlign="right">
+                <Th color="primary.600" cursor="help" textAlign="center">
                   <Flex flexDir="row" alignItems="center">
                     Monto{" "}
                     <Box display={["none", "none", "flex"]}>
@@ -71,7 +71,7 @@ export default function OpportunitiesTable({ data = [] }) {
                 </Th>
               </Tooltip>
               <Tooltip label="Tasa de interes anual" placement="auto">
-                <Th color="primary.600" cursor="help" textAlign="right">
+                <Th color="primary.600" cursor="help" textAlign="center">
                   <Flex flexDir="row" alignItems="center">
                     Interés anual{" "}
                     <Box display={["none", "none", "flex"]}>
@@ -84,7 +84,7 @@ export default function OpportunitiesTable({ data = [] }) {
                 label="Tasa de interes por mora anual (Aplica solo en caso de presentarse mora)"
                 placement="auto"
               >
-                <Th color="primary.600" cursor="help" textAlign="right">
+                <Th color="primary.600" cursor="help" textAlign="center">
                   <Flex flexDir="row" alignItems="center">
                     Interés mora{" "}
                     <Box display={["none", "none", "flex"]}>
@@ -94,7 +94,7 @@ export default function OpportunitiesTable({ data = [] }) {
                 </Th>
               </Tooltip>
               <Tooltip label="Número de coutas" placement="auto">
-                <Th color="primary.600" cursor="help" textAlign="right">
+                <Th color="primary.600" cursor="help" textAlign="center">
                   <Flex flexDir="row" alignItems="center">
                     Plazo{" "}
                     <Box display={["none", "none", "flex"]}>
@@ -104,7 +104,7 @@ export default function OpportunitiesTable({ data = [] }) {
                 </Th>
               </Tooltip>
               <Tooltip label="Monto restante por recaudar" placement="auto">
-                <Th color="primary.600" cursor="help" textAlign="right">
+                <Th color="primary.600" cursor="help" textAlign="center">
                   <Flex flexDir="row" alignItems="center">
                     Por recaudar{" "}
                     <Box display={["none", "none", "flex"]}>
@@ -114,7 +114,7 @@ export default function OpportunitiesTable({ data = [] }) {
                 </Th>
               </Tooltip>
               <Tooltip label="Porcentaje de recaudo" placement="auto">
-                <Th color="primary.600" cursor="help" textAlign="right">
+                <Th color="primary.600" cursor="help" textAlign="center">
                   <Flex flexDir="row" alignItems="center">
                     Porcentaje recaudado{" "}
                     <Box display={["none", "none", "flex"]}>
@@ -126,7 +126,7 @@ export default function OpportunitiesTable({ data = [] }) {
               <Th
                 color="primary.600"
                 cursor="help"
-                textAlign="right"
+                textAlign="center"
                 borderRightRadius={12}
               >
                 Invertir
@@ -136,16 +136,16 @@ export default function OpportunitiesTable({ data = [] }) {
           <Tbody whiteSpace={"nowrap"}>
             {getRows(data).map((item, index) => (
               <Tr key={index} bgColor="white">
-                <Td borderLeftRadius={12} textAlign="left">
+                <Td borderLeftRadius={12} textAlign="center">
                   {item.consecutive}
                 </Td>
-                <Td textAlign="left">{item.amount}</Td>
-                <Td textAlign="left">{item.annualInterestRate}</Td>
-                <Td textAlign="left">{item.annualInterestOverdueRate}</Td>
-                <Td textAlign="left">{item.term}</Td>
-                <Td textAlign="left">{item.remainingAmount}</Td>
-                <Td textAlign="left">{item.fundedPercentage}</Td>
-                <Td textAlign="left" borderRightRadius={12}>
+                <Td textAlign="center">{item.amount}</Td>
+                <Td textAlign="center">{item.annualInterestRate}</Td>
+                <Td textAlign="center">{item.annualInterestOverdueRate}</Td>
+                <Td textAlign="center">{item.term}</Td>
+                <Td textAlign="center">{item.remainingAmount}</Td>
+                <Td textAlign="center">{item.fundedPercentage}</Td>
+                <Td textAlign="center" borderRightRadius={12}>
                   <Button
                     colorScheme="primary"
                     maxW={"fit-content"}
