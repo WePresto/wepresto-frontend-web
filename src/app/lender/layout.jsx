@@ -14,7 +14,7 @@ import WhatsAppIcon from "@wepresto/components/WhatsAppButton";
 
 const LenderMenuItems = [
   {
-    name: "Dashboard",
+    name: "Inicio",
     icon: <FaChartPie fontSize={22} style={{ marginRight: "8px" }} />,
     iconMobile: <FaChartPie fontSize={22} />,
     link: "/lender",

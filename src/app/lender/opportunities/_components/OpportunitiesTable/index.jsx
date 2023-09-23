@@ -58,7 +58,7 @@ export default function OpportunitiesTable({ data = [] }) {
           <Thead whiteSpace={"nowrap"}>
             <Tr bgColor="white">
               <Th color="primary.600" borderLeftRadius={12}>
-                Prestamo
+                Préstamo
               </Th>
               <Tooltip label="Monto solicitado para retirar" placement="auto">
                 <Th color="primary.600" cursor="help" textAlign="right">
@@ -73,7 +73,7 @@ export default function OpportunitiesTable({ data = [] }) {
               <Tooltip label="Tasa de interes anual" placement="auto">
                 <Th color="primary.600" cursor="help" textAlign="right">
                   <Flex flexDir="row" alignItems="center">
-                    Interes anual{" "}
+                    Interés anual{" "}
                     <Box display={["none", "none", "flex"]}>
                       <AiOutlineInfoCircle style={{ marginLeft: "4px" }} />
                     </Box>
@@ -86,7 +86,7 @@ export default function OpportunitiesTable({ data = [] }) {
               >
                 <Th color="primary.600" cursor="help" textAlign="right">
                   <Flex flexDir="row" alignItems="center">
-                    Interes mora{" "}
+                    Interés mora{" "}
                     <Box display={["none", "none", "flex"]}>
                       <AiOutlineInfoCircle style={{ marginLeft: "4px" }} />
                     </Box>

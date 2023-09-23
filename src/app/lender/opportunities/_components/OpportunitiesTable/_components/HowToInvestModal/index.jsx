@@ -63,7 +63,7 @@ const Guide = ({ loanConsecutive }) => {
         step={1}
         content={
           <Text>
-            Envia o recarga mediante Nequi a este número de celular:{" "}
+            Envía o recarga mediante Nequi a este número de celular:{" "}
             <Box as="strong" color="primary.500">
               3134086868
             </Box>
@@ -82,7 +82,7 @@ const Guide = ({ loanConsecutive }) => {
               height="23px"
               color="primary.350"
               icon={<FaRegCopy />}
-            />. El monto debe de ser multiplo y mayor a {formatCurrency(10000)}
+            />. El monto debe de ser múltiplo y mayor a {formatCurrency(10000)}
           </Text>
         }
       />
@@ -90,7 +90,7 @@ const Guide = ({ loanConsecutive }) => {
         step={2}
         content={
           <Text>
-            Una vez que hayas realizado la transacción, envíanos una captura el
+            Una vez que hayas realizado la transacción, envíanos una captura del
             comprobante al siguiente número en WhatsApp:{" "}
             <Link
               fontWeight="medium"
@@ -100,7 +100,7 @@ const Guide = ({ loanConsecutive }) => {
             >
               +57 3134086868
             </Link>{" "}
-            indicando el identificador del préstamo:{" "}
+            indicando el número del préstamo:{" "}
             <Box as="strong" color="primary.500">
               {loanConsecutive}
             </Box>

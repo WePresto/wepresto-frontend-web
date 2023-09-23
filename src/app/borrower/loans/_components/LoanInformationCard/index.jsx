@@ -101,7 +101,7 @@ export default function LoanInformationCard({ data }) {
                   </Flex>
                   <Flex alignItems="center">
                     <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
-                      Termino:
+                      Término:
                     </Text>
                     <Text fontWeight="600" color="primary.900" ml={2}>
                       {data?.term ? `${data?.term} cuotas` : "N/A"}
@@ -158,7 +158,7 @@ export default function LoanInformationCard({ data }) {
               </Flex>
               <Flex alignItems="center" display={["flex", "flex", "none"]}>
                 <Text my={[1, 1, 2]} fontWeight="400" color="primary.700">
-                  Termino:
+                  Término:
                 </Text>
                 <Text fontWeight="600" color="primary.900" ml={2}>
                   {data?.term ? `${data?.term} cuotas` : "N/A"}

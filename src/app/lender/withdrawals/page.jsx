@@ -87,7 +87,7 @@ export default function WithdrawalsPage() {
         w={"100%"}
       >
         <Heading key="1" as="h3" size="lg" fontWeight={800}>
-          Retira tú dinero
+          Retira tu dinero
         </Heading>
 
         {loading && <Spinner mt={4} />}

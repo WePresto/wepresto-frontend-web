@@ -118,7 +118,7 @@ export default function InvestmentsPage() {
               <Thead>
                 <Tr bgColor="white">
                   <Th color="primary.600" borderLeftRadius={12}>
-                    Prestamo
+                    Préstamo
                   </Th>
                   <Th color="primary.600">Estado</Th>
                   <Th color="primary.600">Invertido</Th>

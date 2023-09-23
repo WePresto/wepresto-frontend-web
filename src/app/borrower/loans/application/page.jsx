@@ -504,10 +504,10 @@ export default function Application() {
               >
                 <AlertDialogOverlay />
                 <AlertDialogContent>
-                  <AlertDialogHeader>Solicitar préstamo?</AlertDialogHeader>
+                  <AlertDialogHeader>¿Solicitar préstamo?</AlertDialogHeader>
                   <AlertDialogCloseButton />
                   <AlertDialogBody>
-                    Estas seguro de solicitar el préstamo por un monto de{" "}
+                    ¿Estás seguro de solicitar el préstamo por un monto de{" "}
                     {formatCurrency(simulatedLoan?.amount, "COP")} a un plazo de{" "}
                     {simulatedLoan?.term} cuotas?
                   </AlertDialogBody>
@@ -521,7 +521,7 @@ export default function Application() {
                       isDisabled={applying}
                       onClick={handleApplyOnClick}
                     >
-                      Si
+                      Sí
                     </Button>
                   </AlertDialogFooter>
                 </AlertDialogContent>
