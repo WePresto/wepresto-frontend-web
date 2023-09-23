@@ -7,7 +7,7 @@ const LogosShowcase = () => {
     "https://wepresto.com/eventique.png",
     "https://wepresto.com/dfl.png",
     "https://wepresto.com/logo_pivvot.webp",
-    "https://wepresto.com/clicks-parts.png"
+    "https://wepresto.com/click-parts.png"
   ];
 
   return (
