@@ -18,6 +18,7 @@ import formatCurrency from "@wepresto/utils/format-currency";
 const getRows = (items) => {
   return items.map((item) => {
     return {
+      consecutive: `W-${item?.id}`,
       amount: formatCurrency(item?.amount, "COP"),
       depositAmount: formatCurrency(item?.depositAmount),
       comissionAmount: formatCurrency(item?.comissionAmount),
@@ -36,7 +37,7 @@ const getRows = (items) => {
           color="primary.350"
           icon={<AiOutlineEye />}
         />
-      ): undefined,
+      ) : undefined,
     };
   });
 };
@@ -50,13 +51,23 @@ export default function WithdrawalsTable({ data = [] }) {
       >
         <Thead>
           <Tr bgColor="white">
-            <Tooltip label="Monto solicitado para retirar" placement="auto">
+            <Tooltip label="Identificador del retiro" placement="auto">
               <Th
                 color="primary.600"
                 cursor="help"
                 textAlign="right"
                 borderLeftRadius={12}
               >
+                <Flex flexDir="row" alignItems="center">
+                  Retiro{" "}
+                  <Box display={["none", "none", "flex"]}>
+                    <AiOutlineInfoCircle style={{ marginLeft: "4px" }} />
+                  </Box>
+                </Flex>
+              </Th>
+            </Tooltip>
+            <Tooltip label="Monto solicitado para retirar" placement="auto">
+              <Th color="primary.600" cursor="help" textAlign="right">
                 <Flex flexDir="row" alignItems="center">
                   Monto{" "}
                   <Box display={["none", "none", "flex"]}>
@@ -155,6 +166,9 @@ export default function WithdrawalsTable({ data = [] }) {
           {getRows(data).map((item, index) => (
             <Tr key={index} bgColor="white">
               <Td color="brand.font" borderLeftRadius={12} textAlign="left">
+                {item.consecutive}
+              </Td>
+              <Td color="brand.font" textAlign="left">
                 {item.amount}
               </Td>
               <Td color="brand.font" textAlign="left">
