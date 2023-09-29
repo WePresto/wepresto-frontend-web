@@ -128,7 +128,7 @@ export default function InvestmentsPage() {
                   <Th color="primary.600">Estado</Th>
                   <Th color="primary.600">Invertido</Th>
                   <Tooltip
-                    label="El porcentaje de tu dinero que se usó para el préstamo. Si es del 100% es porque tú pusiste todo el dinero para ese préstamo."
+                    label="El porcentaje de participación que tienes en el préstamo, basado en el monto que invertiste."
                     placement="auto"
                   >
                     <Th color="primary.600" cursor="help" textAlign="right">
@@ -141,7 +141,7 @@ export default function InvestmentsPage() {
                     </Th>
                   </Tooltip>
                   <Tooltip
-                    label="Dinero recuperado de lo que invertiste en este préstamo"
+                    label="Dinero recuperado de la inversión que hiciste en el préstamo"
                     placement="auto"
                   >
                     <Th color="primary.600" cursor="help" textAlign="right">
@@ -154,7 +154,7 @@ export default function InvestmentsPage() {
                     </Th>
                   </Tooltip>
                   <Tooltip
-                    label="Dinero generado por el interés de este préstamo"
+                    label="Dinero generado por el interés del préstamo"
                     placement="auto"
                   >
                     <Th color="primary.600" cursor="help" textAlign="right">
@@ -167,7 +167,7 @@ export default function InvestmentsPage() {
                     </Th>
                   </Tooltip>
                   <Tooltip
-                    label="Dinero que posiblemente generes con el interés de este préstamo"
+                    label="Dinero que posiblemente generes con el interés del préstamo"
                     placement="auto"
                   >
                     <Th
@@ -177,7 +177,7 @@ export default function InvestmentsPage() {
                       borderRightRadius={12}
                     >
                       <Flex flexDir="row" alignItems="center">
-                        Ganancias esperadas{" "}
+                        G. esperadas{" "}
                         <Box display={["none", "none", "flex"]}>
                           <AiOutlineInfoCircle style={{ marginLeft: "4px" }} />
                         </Box>
