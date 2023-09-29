@@ -35,6 +35,8 @@ const getRows = (items) => {
   return items.map((item) => {
     return {
       loanConsecutive: item?.loan?.consecutive,
+      loanAmount: formatCurrency(item?.loan?.amount, "COP"),
+      term: item?.loan?.term,
       loanStatus: getLoanStatusObj(item?.loan?.status)?.name,
       invested: formatCurrency(item?.amount, "COP"),
       participationRate:
@@ -42,7 +44,6 @@ const getRows = (items) => {
       annualInterestParticipationRate:
         approximateToTwoDecimals(item?.annualInterestParticipationRate * 100) +
         "%",
-      term: item?.loan?.term,
       paidPrincipal: formatCurrency(item?.loan?.paidPrincipal, "COP"),
       paidInterest: formatCurrency(item?.loan?.paidInterest),
       interest: formatCurrency(item?.loan?.interest),
@@ -120,6 +121,10 @@ export default function InvestmentsPage() {
                   <Th color="primary.600" borderLeftRadius={12}>
                     Préstamo
                   </Th>
+                  <Th color="primary.600">Monto</Th>
+                  <Th color="primary.600" textAlign="right">
+                    Cuotas
+                  </Th>
                   <Th color="primary.600">Estado</Th>
                   <Th color="primary.600">Invertido</Th>
                   <Tooltip
@@ -135,22 +140,6 @@ export default function InvestmentsPage() {
                       </Flex>
                     </Th>
                   </Tooltip>
-                  <Tooltip
-                    label="El interés que generarás anualmente con este préstamo"
-                    placement="auto"
-                  >
-                    <Th color="primary.600" cursor="help" textAlign="right">
-                      <Flex flexDir="row" alignItems="center">
-                        Interés anual{" "}
-                        <Box display={["none", "none", "flex"]}>
-                          <AiOutlineInfoCircle style={{ marginLeft: "4px" }} />
-                        </Box>
-                      </Flex>
-                    </Th>
-                  </Tooltip>
-                  <Th color="primary.600" textAlign="right">
-                    Cuotas
-                  </Th>
                   <Tooltip
                     label="Dinero recuperado de lo que invertiste en este préstamo"
                     placement="auto"
@@ -208,6 +197,12 @@ export default function InvestmentsPage() {
                       {participation.loanConsecutive}
                     </Td>
                     <Td color="brand.font" textAlign="left">
+                      {participation.loanAmount}
+                    </Td>
+                    <Td color="brand.font" textAlign="left">
+                      {participation.term}
+                    </Td>
+                    <Td color="brand.font" textAlign="left">
                       {participation.loanStatus}
                     </Td>
                     <Td color="brand.font" textAlign="left">
@@ -215,12 +210,6 @@ export default function InvestmentsPage() {
                     </Td>
                     <Td color="brand.font" textAlign="left">
                       {participation.participationRate}
-                    </Td>
-                    <Td color="brand.font" textAlign="left">
-                      {participation.annualInterestParticipationRate}
-                    </Td>
-                    <Td color="brand.font" textAlign="left">
-                      {participation.term}
                     </Td>
                     <Td color="brand.font" textAlign="left">
                       {participation.paidPrincipal}
