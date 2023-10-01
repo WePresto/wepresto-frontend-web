@@ -69,7 +69,6 @@ export default function BorrowerLayaout({ children }) {
         continuous
         run={run}
         scrollToFirstStep
-        showProgress
         showSkipButton
         steps={steps}
         styles={{
