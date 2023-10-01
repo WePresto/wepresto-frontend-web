@@ -9,7 +9,7 @@ const NavItem = ({
   active,
 }) => {
   return (
-    <Flex flexBasis={0} flexGrow={1} alignItems="center" flexDirection="column">
+    <Flex className={label} flexBasis={0} flexGrow={1} alignItems="center" flexDirection="column">
       <Link href={link}>
         <Flex
           color={active ? "primary.700" : "primary.350"}

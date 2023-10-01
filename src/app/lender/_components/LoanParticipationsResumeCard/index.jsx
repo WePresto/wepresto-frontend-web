@@ -30,6 +30,7 @@ export default function LoanParticipationsResumeCard({ data }) {
       maxW={["100%", "100%", "600px"]}
       w={["100%", "100%", "100%"]}
       flexDirection="column"
+      className="lenderCard"
     >
       <Text fontSize={16} color="primary.700" pt={8} px={8}>
         Haz invertido en total

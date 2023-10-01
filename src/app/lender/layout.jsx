@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Flex, Container } from "@chakra-ui/react";
 import { FaChartPie, FaChartLine, FaSearchDollar } from "react-icons/fa";
 import { BiMoneyWithdraw } from "react-icons/bi";
@@ -11,6 +11,9 @@ import useAuthContext from "@wepresto/context/auth-context";
 
 import Menu from "@wepresto/components/Menu";
 import WhatsAppIcon from "@wepresto/components/WhatsAppButton";
+import Joyride, { STATUS } from "react-joyride";
+import { homeSteps } from "@wepresto/utils/tours/lender/home";
+import isFirstLogin from "@wepresto/utils/is-first-login";
 
 const LenderMenuItems = [
   {
@@ -42,9 +45,40 @@ const LenderMenuItems = [
 export default function BorrowerLayaout({ children }) {
   const { user } = useAuthContext();
 
+  const [{ run, steps }, setState] = useState({
+    run: isFirstLogin(user.createdAt),
+    steps: homeSteps
+  });
+
+  const handleJoyrideCallback = (data) => {
+    const { status } = data;
+    const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED];
+
+    if (finishedStatuses.includes(status)) {
+      setState({ run: false });
+    }
+
+  };
+
   return (
     <Providers>
       <Flex w="100%">
+      <Joyride
+        callback={handleJoyrideCallback}
+        locale={{ back: "Atrás", close: "Cerrar", last: "Finalizar", next: "Siguiente", open: "Abrir", skip: "Salir" }}
+        continuous
+        run={run}
+        scrollToFirstStep
+        showProgress
+        showSkipButton
+        steps={steps}
+        styles={{
+          options: {
+            zIndex: 10000,
+            primaryColor: "#1F4E52",
+          },
+        }}
+      />
         <Container
           boxShadow={["0px 4px 51px rgba(0, 0, 0, 0.05)", "none", "none"]}
           maxW="100%"

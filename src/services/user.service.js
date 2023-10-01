@@ -48,7 +48,7 @@ class UserService {
 
     return {
       ...data,
-      message: "Tú usuario ha sido creado exitosamente",
+      message: "Tu usuario ha sido creado exitosamente",
     };
   }
 
@@ -80,7 +80,7 @@ class UserService {
 
     return {
       ...data,
-      message: "Tú usuario ha sido creado exitosamente",
+      message: "Tu usuario ha sido creado exitosamente",
     };
   }
 
