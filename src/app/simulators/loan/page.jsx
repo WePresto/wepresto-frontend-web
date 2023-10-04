@@ -28,7 +28,7 @@ import approximateToTwoDecimals from "@wepresto/utils/approximate-to-two-decimal
 const { toast } = createStandaloneToast();
 
 const MIN_AMOUNT = 250000;
-const MAX_AMOUNT = 5000000;
+const MAX_AMOUNT = 1500000;
 const INITIAL_AMOUNT = 500000;
 
 export default function SimulateLoan() {

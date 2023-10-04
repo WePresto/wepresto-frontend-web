@@ -47,7 +47,7 @@ import InstallementsTable from "./_components/InstallementsTable";
 const { toast } = createStandaloneToast();
 
 const MIN_AMOUNT = 250000;
-const MAX_AMOUNT = 5000000;
+const MAX_AMOUNT = 1500000;
 const INITIAL_AMOUNT = 500000;
 
 const ALIAS_PLACEHOLDERS = [
