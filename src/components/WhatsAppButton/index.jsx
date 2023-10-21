@@ -20,6 +20,7 @@ const WhatsAppIcon = ({ fullName, documentNumber }) => {
       zIndex={999}
       display="flex"
       onClick={handleSendMessage}
+      className="Whatsapp"
     >
       <Text
         fontSize={[14, 14, 18]}

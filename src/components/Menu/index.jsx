@@ -205,6 +205,7 @@ export const Menu = ({ user = undefined, menuItems = [] }) => {
               px={8}
               justifyContent="flex-start"
               width="100%"
+              className={item.name}
               mt={4}
               py={6}
               leftIcon={item.icon}
@@ -243,6 +244,7 @@ export const Menu = ({ user = undefined, menuItems = [] }) => {
           <Button
             justifyContent="flex-start"
             px={8}
+            className="Ajustes"
             leftIcon={<FaCog fontSize={22} style={{ marginRight: "8px" }} />}
             width="100%"
             mt={4}
@@ -278,6 +280,7 @@ export const Menu = ({ user = undefined, menuItems = [] }) => {
           bgColor="transparent"
           color="error.300"
           borderRadius={12}
+          className="CerrarSesion"
         >
           Cerrar sesión
         </Button>
