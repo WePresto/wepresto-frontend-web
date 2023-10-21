@@ -113,17 +113,17 @@ export default function InvestmentsPage() {
           </Flex>
         )}
 
-        <Grid templateColumns={['repeat(1, 1fr)','repeat(3, 1fr)']} gap={4} mt={8}>
+        <Grid templateColumns={["repeat(1, 1fr)","repeat(3, 1fr)"]} gap={4} mt={8}>
           {!loading && participations.length > 0 &&
             participations.map((participation, index) => (
               <GridItem>
               <Accordion key={index} bgColor={"white"} _hover={{ bgColor: "none" }} pb={2} boxShadow={"lg"} borderRadius={12} allowToggle>
                 <AccordionItem border={"none"} borderRadius={12} overflow={"hidden"}>
                   <AccordionButton _hover={{ bgColor: "none" }} bgColor={"white"}>
-                    <Box mt={2} as="span" flex='1' textAlign='left'>
+                    <Box mt={2} as="span" flex="1" textAlign="left">
                       <Flex mb={4} justifyContent={"space-between"}>
                         <Text color="gray.700" fontSize={20} fontWeight={800}>{participation.loanConsecutive}</Text>
-                        <Tag variant='solid' borderRadius='full' bgColor={participation.loanStatusColor} color={"white"}>
+                        <Tag variant="solid" borderRadius="full" bgColor={participation.loanStatusColor} color={"white"}>
                           {participation.loanStatus}
                         </Tag>
                       </Flex>
@@ -150,7 +150,7 @@ export default function InvestmentsPage() {
                     </Box>
                   </AccordionButton>
                   <AccordionPanel bgColor={"white"} py={0}>
-                    <Box as="span" flex='1' textAlign='left'>
+                    <Box as="span" flex="1" textAlign="left">
                       <Flex mb={2} justifyContent={"space-between"}>
                         <Tooltip
                           label="Dinero recuperado de la inversión que hiciste en el préstamo"
