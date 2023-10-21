@@ -113,84 +113,154 @@ export default function InvestmentsPage() {
           </Flex>
         )}
 
-        <Grid templateColumns={["repeat(1, 1fr)","repeat(3, 1fr)"]} gap={4} mt={8}>
+        <Grid
+          templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]}
+          gap={4}
+          mt={8}
+        >
           {!loading && participations.length > 0 &&
             participations.map((participation, index) => (
               <GridItem>
-              <Accordion key={index} bgColor={"white"} _hover={{ bgColor: "none" }} pb={2} boxShadow={"lg"} borderRadius={12} allowToggle>
-                <AccordionItem border={"none"} borderRadius={12} overflow={"hidden"}>
-                  <AccordionButton _hover={{ bgColor: "none" }} bgColor={"white"}>
-                    <Box mt={2} as="span" flex="1" textAlign="left">
-                      <Flex mb={4} justifyContent={"space-between"}>
-                        <Text color="gray.700" fontSize={20} fontWeight={800}>{participation.loanConsecutive}</Text>
-                        <Tag variant="solid" borderRadius="full" bgColor={participation.loanStatusColor} color={"white"}>
-                          {participation.loanStatus}
-                        </Tag>
-                      </Flex>
-                      <Flex mb={2} justifyContent={"space-between"}>
-                        <Text color="primary.500" fontSize={16}>Inversión</Text>
-                        <Text color="gray.700" fontSize={16}>{participation.invested}</Text>
-                      </Flex>
-                      <Flex mb={2} justifyContent={"space-between"}>
-                        <Text color="primary.500" fontSize={16}>Cuotas</Text>
-                        <Text color="gray.700" fontSize={16}>{participation.term}</Text>
-                      </Flex>
-                      <Flex mb={0} justifyContent={"space-between"}>
-                        <Tooltip
-                          label="El porcentaje de participación que tienes en el préstamo, basado en el monto que invertiste."
-                          placement="auto"
-                        >
-                          <Flex alignItems={"center"}>
-                            <Text color="primary.500" fontSize={16}>Participación</Text>
-                            <AiOutlineInfoCircle color="#1F4E52" style={{ marginLeft: "4px" }} />
-                          </Flex>
-                        </Tooltip>
-                        <Text color="gray.700" fontSize={16}>{participation.participationRate}</Text>
-                      </Flex>
-                    </Box>
-                  </AccordionButton>
-                  <AccordionPanel bgColor={"white"} py={0}>
-                    <Box as="span" flex="1" textAlign="left">
-                      <Flex mb={2} justifyContent={"space-between"}>
-                        <Tooltip
-                          label="Dinero recuperado de la inversión que hiciste en el préstamo"
-                          placement="auto"
-                        >
-                          <Flex alignItems={"center"}>
-                            <Text color="primary.500" fontSize={16}>Recuperado</Text>
-                            <AiOutlineInfoCircle color="#1F4E52" style={{ marginLeft: "4px" }} />
-                          </Flex>
-                        </Tooltip>
-                        <Text color="gray.700" fontSize={16}>{participation.paidPrincipal}</Text>
-                      </Flex>
-                      <Flex mb={2} justifyContent={"space-between"}>
-                        <Tooltip
-                          label="Dinero generado por el interés del préstamo"
-                          placement="auto"
-                        >
-                          <Flex alignItems={"center"}>
-                            <Text color="primary.500" fontSize={16}>Ganancias</Text>
-                            <AiOutlineInfoCircle color="#1F4E52" style={{ marginLeft: "4px" }} />
-                          </Flex>
-                        </Tooltip>
-                        <Text color="gray.700" fontSize={16}>{participation.paidInterest}</Text>
-                      </Flex>
-                      <Flex mb={2} justifyContent={"space-between"}>
-                        <Tooltip
-                          label="Dinero que posiblemente generes con el interés del préstamo"
-                          placement="auto"
-                        >
-                          <Flex alignItems={"center"}>
-                            <Text color="primary.500" fontSize={16}>Ganancias esperadas</Text>
-                            <AiOutlineInfoCircle color="#1F4E52" style={{ marginLeft: "4px" }} />
-                          </Flex>
-                        </Tooltip>
-                        <Text color="gray.700" fontSize={16}>{participation.interest}</Text>
-                      </Flex>
-                    </Box>
-                  </AccordionPanel>
-                </AccordionItem>
-              </Accordion>
+                <Accordion
+                  key={index}
+                  bgColor={"white"}
+                  _hover={{ bgColor: "none" }}
+                  pb={2}
+                  boxShadow={"lg"}
+                  borderRadius={12}
+                  allowToggle
+                >
+                  <AccordionItem
+                    border={"none"}
+                    borderRadius={12}
+                    overflow={"hidden"}
+                  >
+                    <AccordionButton
+                      _hover={{ bgColor: "none" }}
+                      bgColor={"white"}
+                    >
+                      <Box mt={2} as="span" flex="1" textAlign="left">
+                        <Flex mb={4} justifyContent={"space-between"}>
+                          <Text
+                            color="gray.700"
+                            fontSize={20}
+                            fontWeight={800}
+                          >
+                            {participation.loanConsecutive}
+                          </Text>
+                          <Tag
+                            variant="solid"
+                            borderRadius="full"
+                            bgColor={participation.loanStatusColor}
+                            color={"white"}
+                          >
+                            {participation.loanStatus}
+                          </Tag>
+                        </Flex>
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Text color="primary.500" fontSize={16}>
+                            Inversión
+                          </Text>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.invested}
+                          </Text>
+                        </Flex>
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Text color="primary.500" fontSize={16}>
+                            Cuotas
+                          </Text>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.term}
+                          </Text>
+                        </Flex>
+                        <Flex mb={0} justifyContent={"space-between"}>
+                          <Tooltip
+                            label="El porcentaje de participación que tienes
+                           en el préstamo, basado en el monto que invertiste."
+                            placement="auto"
+                          >
+                            <Flex alignItems={"center"}>
+                              <Text color="primary.500" fontSize={16}>
+                                Participación
+                              </Text>
+                              <AiOutlineInfoCircle
+                                color="#1F4E52"
+                                style={{ marginLeft: "4px" }}
+                              />
+                            </Flex>
+                          </Tooltip>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.participationRate}
+                          </Text>
+                        </Flex>
+                      </Box>
+                    </AccordionButton>
+                    <AccordionPanel bgColor={"white"} py={0}>
+                      <Box as="span" flex="1" textAlign="left">
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Tooltip
+                            label="Dinero recuperado de la 
+                          inversión que hiciste en el préstamo"
+                            placement="auto"
+                          >
+                            <Flex alignItems={"center"}>
+                              <Text color="primary.500" fontSize={16}>
+                                Recuperado
+                              </Text>
+                              <AiOutlineInfoCircle
+                                color="#1F4E52"
+                                style={{ marginLeft: "4px" }}
+                              />
+                            </Flex>
+                          </Tooltip>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.paidPrincipal}
+                          </Text>
+                        </Flex>
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Tooltip
+                            label="Dinero generado por el 
+                            interés del préstamo"
+                            placement="auto"
+                          >
+                            <Flex alignItems={"center"}>
+                              <Text color="primary.500" fontSize={16}>
+                                Ganancias
+                              </Text>
+                              <AiOutlineInfoCircle
+                                color="#1F4E52"
+                                style={{ marginLeft: "4px" }}
+                              />
+                            </Flex>
+                          </Tooltip>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.paidInterest}
+                          </Text>
+                        </Flex>
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Tooltip
+                            label="Dinero que posiblemente
+                           generes con el interés del préstamo"
+                            placement="auto"
+                          >
+                            <Flex alignItems={"center"}>
+                              <Text color="primary.500" fontSize={16}>
+                                Ganancias esperadas
+                              </Text>
+                              <AiOutlineInfoCircle
+                                color="#1F4E52"
+                                style={{ marginLeft: "4px" }}
+                              />
+                            </Flex>
+                          </Tooltip>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.interest}
+                          </Text>
+                        </Flex>
+                      </Box>
+                    </AccordionPanel>
+                  </AccordionItem>
+                </Accordion>
               </GridItem>
             ))}
         </Grid>
