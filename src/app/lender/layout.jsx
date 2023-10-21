@@ -46,7 +46,7 @@ export default function BorrowerLayaout({ children }) {
   const { user } = useAuthContext();
 
   const [{ run, steps }, setState] = useState({
-    run: isFirstLogin(user.createdAt),
+    run: isFirstLogin(user?.createdAt || false),
     steps: homeSteps
   });
 
