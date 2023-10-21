@@ -16,7 +16,7 @@ import {
   Tooltip,
   AccordionPanel,
   Grid,
-  GridItem
+  GridItem,
 } from "@chakra-ui/react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useRouter } from "next/navigation";
