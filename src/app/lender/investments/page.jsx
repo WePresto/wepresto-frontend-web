@@ -5,16 +5,18 @@ import {
   Flex,
   Heading,
   Spinner,
-  Table,
-  Thead,
-  Tr,
-  Th,
-  Tooltip,
   Box,
   createStandaloneToast,
-  Tbody,
-  Td,
+  Tag,
+  Text,
   Button,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  Tooltip,
+  AccordionPanel,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useRouter } from "next/navigation";
@@ -38,6 +40,7 @@ const getRows = (items) => {
       loanAmount: formatCurrency(item?.loan?.amount, "COP"),
       term: item?.loan?.term,
       loanStatus: getLoanStatusObj(item?.loan?.status)?.name,
+      loanStatusColor: getLoanStatusObj(item?.loan?.status)?.bgColor,
       invested: formatCurrency(item?.amount, "COP"),
       participationRate:
         approximateToTwoDecimals(item?.participationRate * 100) + "%",
@@ -110,126 +113,153 @@ export default function InvestmentsPage() {
           </Flex>
         )}
 
-        {!loading && participations.length > 0 && (
-          <Flex overflowX="auto">
-            <Table
-              style={{ borderCollapse: "separate", borderSpacing: "0 12px" }}
-              variant="simple"
-            >
-              <Thead>
-                <Tr bgColor="white">
-                  <Th color="primary.600" borderLeftRadius={12}>
-                    Préstamo
-                  </Th>
-                  <Th color="primary.600">Monto</Th>
-                  <Th color="primary.600" textAlign="right">
-                    Cuotas
-                  </Th>
-                  <Th color="primary.600">Estado</Th>
-                  <Th color="primary.600">Invertido</Th>
-                  <Tooltip
-                    label="El porcentaje de participación que tienes en el préstamo, basado en el monto que invertiste."
-                    placement="auto"
+        <Grid
+          templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]}
+          gap={4}
+          mt={8}
+        >
+          {!loading &&
+            participations.length > 0 &&
+            participations.map((participation, index) => (
+              <GridItem key={index}>
+                <Accordion
+                  bgColor={"white"}
+                  _hover={{ bgColor: "none" }}
+                  pb={2}
+                  boxShadow={"lg"}
+                  borderRadius={12}
+                  allowToggle
+                >
+                  <AccordionItem
+                    border={"none"}
+                    borderRadius={12}
+                    overflow={"hidden"}
                   >
-                    <Th color="primary.600" cursor="help" textAlign="right">
-                      <Flex flexDir="row" alignItems="center">
-                        Participación{" "}
-                        <Box display={["none", "none", "flex"]}>
-                          <AiOutlineInfoCircle style={{ marginLeft: "4px" }} />
-                        </Box>
-                      </Flex>
-                    </Th>
-                  </Tooltip>
-                  <Tooltip
-                    label="Dinero recuperado de la inversión que hiciste en el préstamo"
-                    placement="auto"
-                  >
-                    <Th color="primary.600" cursor="help" textAlign="right">
-                      <Flex flexDir="row" alignItems="center">
-                        Recuperado{" "}
-                        <Box display={["none", "none", "flex"]}>
-                          <AiOutlineInfoCircle style={{ marginLeft: "4px" }} />
-                        </Box>
-                      </Flex>
-                    </Th>
-                  </Tooltip>
-                  <Tooltip
-                    label="Dinero generado por el interés del préstamo"
-                    placement="auto"
-                  >
-                    <Th color="primary.600" cursor="help" textAlign="right">
-                      <Flex flexDir="row" alignItems="center">
-                        Ganancias{" "}
-                        <Box display={["none", "none", "flex"]}>
-                          <AiOutlineInfoCircle style={{ marginLeft: "4px" }} />
-                        </Box>
-                      </Flex>
-                    </Th>
-                  </Tooltip>
-                  <Tooltip
-                    label="Dinero que posiblemente generes con el interés del préstamo"
-                    placement="auto"
-                  >
-                    <Th
-                      color="primary.600"
-                      cursor="help"
-                      textAlign="right"
-                      borderRightRadius={12}
+                    <AccordionButton
+                      _hover={{ bgColor: "none" }}
+                      bgColor={"white"}
                     >
-                      <Flex flexDir="row" alignItems="center">
-                        G. esperadas{" "}
-                        <Box display={["none", "none", "flex"]}>
-                          <AiOutlineInfoCircle style={{ marginLeft: "4px" }} />
-                        </Box>
-                      </Flex>
-                    </Th>
-                  </Tooltip>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {participations.map((participation, index) => (
-                  <Tr key={index} bgColor="white">
-                    <Td
-                      color="brand.font"
-                      borderLeftRadius={12}
-                      textAlign="left"
-                    >
-                      {participation.loanConsecutive}
-                    </Td>
-                    <Td color="brand.font" textAlign="left">
-                      {participation.loanAmount}
-                    </Td>
-                    <Td color="brand.font" textAlign="left">
-                      {participation.term}
-                    </Td>
-                    <Td color="brand.font" textAlign="left">
-                      {participation.loanStatus}
-                    </Td>
-                    <Td color="brand.font" textAlign="left">
-                      {participation.invested}
-                    </Td>
-                    <Td color="brand.font" textAlign="left">
-                      {participation.participationRate}
-                    </Td>
-                    <Td color="brand.font" textAlign="left">
-                      {participation.paidPrincipal}
-                    </Td>
-                    <Td color="brand.font" textAlign="left">
-                      {participation.paidInterest}
-                    </Td>
-                    <Td
-                      color="brand.font"
-                      textAlign="left"
-                      borderRightRadius={12}
-                    >
-                      {participation.interest}
-                    </Td>
-                  </Tr>
-                ))}
-              </Tbody>
-            </Table>
-          </Flex>
-        )}
+                      <Box mt={2} as="span" flex="1" textAlign="left">
+                        <Flex mb={4} justifyContent={"space-between"}>
+                          <Text color="gray.700" fontSize={20} fontWeight={800}>
+                            {participation.loanConsecutive}
+                          </Text>
+                          <Tag
+                            variant="solid"
+                            borderRadius="full"
+                            bgColor={participation.loanStatusColor}
+                            color={"white"}
+                          >
+                            {participation.loanStatus}
+                          </Tag>
+                        </Flex>
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Text color="primary.500" fontSize={16}>
+                            Inversión
+                          </Text>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.invested}
+                          </Text>
+                        </Flex>
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Text color="primary.500" fontSize={16}>
+                            Cuotas
+                          </Text>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.term}
+                          </Text>
+                        </Flex>
+                        <Flex mb={0} justifyContent={"space-between"}>
+                          <Tooltip
+                            label="El porcentaje de participación que tienes
+                           en el préstamo, basado en el monto que invertiste."
+                            placement="auto"
+                          >
+                            <Flex alignItems={"center"}>
+                              <Text color="primary.500" fontSize={16}>
+                                Participación
+                              </Text>
+                              <AiOutlineInfoCircle
+                                color="#1F4E52"
+                                style={{ marginLeft: "4px" }}
+                              />
+                            </Flex>
+                          </Tooltip>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.participationRate}
+                          </Text>
+                        </Flex>
+                      </Box>
+                    </AccordionButton>
+                    <AccordionPanel bgColor={"white"} py={0}>
+                      <Box as="span" flex="1" textAlign="left">
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Tooltip
+                            label="Dinero recuperado de la 
+                          inversión que hiciste en el préstamo"
+                            placement="auto"
+                          >
+                            <Flex alignItems={"center"}>
+                              <Text color="primary.500" fontSize={16}>
+                                Recuperado
+                              </Text>
+                              <AiOutlineInfoCircle
+                                color="#1F4E52"
+                                style={{ marginLeft: "4px" }}
+                              />
+                            </Flex>
+                          </Tooltip>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.paidPrincipal}
+                          </Text>
+                        </Flex>
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Tooltip
+                            label="Dinero generado por el 
+                            interés del préstamo"
+                            placement="auto"
+                          >
+                            <Flex alignItems={"center"}>
+                              <Text color="primary.500" fontSize={16}>
+                                Ganancias
+                              </Text>
+                              <AiOutlineInfoCircle
+                                color="#1F4E52"
+                                style={{ marginLeft: "4px" }}
+                              />
+                            </Flex>
+                          </Tooltip>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.paidInterest}
+                          </Text>
+                        </Flex>
+                        <Flex mb={2} justifyContent={"space-between"}>
+                          <Tooltip
+                            label="Dinero que posiblemente
+                           generes con el interés del préstamo"
+                            placement="auto"
+                          >
+                            <Flex alignItems={"center"}>
+                              <Text color="primary.500" fontSize={16}>
+                                Ganancias esperadas
+                              </Text>
+                              <AiOutlineInfoCircle
+                                color="#1F4E52"
+                                style={{ marginLeft: "4px" }}
+                              />
+                            </Flex>
+                          </Tooltip>
+                          <Text color="gray.700" fontSize={16}>
+                            {participation.interest}
+                          </Text>
+                        </Flex>
+                      </Box>
+                    </AccordionPanel>
+                  </AccordionItem>
+                </Accordion>
+              </GridItem>
+            ))}
+        </Grid>
       </Flex>
     </>
   );
