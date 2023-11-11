@@ -118,11 +118,11 @@ export default function InvestmentsPage() {
           gap={4}
           mt={8}
         >
-          {!loading && participations.length > 0 &&
+          {!loading &&
+            participations.length > 0 &&
             participations.map((participation, index) => (
-              <GridItem>
+              <GridItem key={index}>
                 <Accordion
-                  key={index}
                   bgColor={"white"}
                   _hover={{ bgColor: "none" }}
                   pb={2}
@@ -141,11 +141,7 @@ export default function InvestmentsPage() {
                     >
                       <Box mt={2} as="span" flex="1" textAlign="left">
                         <Flex mb={4} justifyContent={"space-between"}>
-                          <Text
-                            color="gray.700"
-                            fontSize={20}
-                            fontWeight={800}
-                          >
+                          <Text color="gray.700" fontSize={20} fontWeight={800}>
                             {participation.loanConsecutive}
                           </Text>
                           <Tag
